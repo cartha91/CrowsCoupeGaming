@@ -1,0 +1,25 @@
+[
+  {
+    "name": "EpicPankakes",
+    "role": "Streamer",
+    "bio": "Rpg enthusiast, variety streamer, anime fan, and collector.",
+    "image": "pancake.jpg",
+    "games": ["Elder Scrolls", "Throne & Liberty", "Marvel Legends"],
+    "twitch": "https://twitch.tv/rogueraven"
+  },
+  {
+    "name": "Cartha",
+    "role": "Competitive Player",
+    "bio": "PvP master and top-tier shotcaller in ranked games, Head of CrowsCoupe Gaming and a bit of a weeb",
+    "image": "CarthaPro.png",
+    "games": ["Throne & Liberty", "Call Of Duty", "Elden Ring"],
+    "youtube": "https://youtube.com/@nightcrow"
+  },
+  {
+    "name": "Eally",
+    "role": "Community Mod",
+    "bio": "Holding it down on Discord and keeping the vibes 100, solo gamer, loves the gems like Animal Crossing",
+    "image": "EalleyEdit.png",
+    "games": ["Animal Crossing", "Stardew Valley"]
+  }
+]

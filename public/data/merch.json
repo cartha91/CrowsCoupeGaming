@@ -1,0 +1,42 @@
+[
+  {
+    "id": "hat-001",
+    "name": "Snapback Hat",
+    "price": 24.99,
+    "image": "merch-hat.jpg",
+    "description": "Logo-stitched cap with shadow wings embroidery.",
+    "url": "https://yourstore.com/products/hat",
+    "status": "in_stock",
+    "tags": ["apparel", "cap"]
+  },
+  {
+    "id": "tee-001",
+    "name": "Classic Tee",
+    "price": 29.99,
+    "image": "merch-tee.jpg",
+    "description": "Premium fabric with signature CrowsCoupe crest.",
+    "url": "https://yourstore.com/products/tee",
+    "status": "in_stock",
+    "tags": ["apparel", "t-shirt"]
+  },
+  {
+    "id": "hoodie-001",
+    "name": "Winter Hoodie",
+    "price": 54.99,
+    "image": "merch-hoodie.jpg",
+    "description": "Fleece-lined, sleek, and built for the grind.",
+    "url": "https://yourstore.com/products/hoodie",
+    "status": "coming_soon",
+    "tags": ["apparel", "hoodie"]
+  },
+  {
+    "id": "sticker-001",
+    "name": "Crest Sticker Pack",
+    "price": 7.99,
+    "image": "merch-stickers.jpg",
+    "description": "Waterproof vinyl stickers — slap the flock anywhere.",
+    "url": "https://yourstore.com/products/stickers",
+    "status": "out_of_stock",
+    "tags": ["accessories"]
+  }
+]

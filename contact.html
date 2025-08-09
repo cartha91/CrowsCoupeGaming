@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | CrowsCoupe Gaming</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">CrowsCoupe Gaming</div>
+    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="contact.html" class="active">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero shop-hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Support the Flock</h1>
+      <p>Grab exclusive CrowsCoupe Gaming merch and rep the team in style.</p>
+    </div>
+  </section>
+
+  <!-- Merch Grid (JSON-driven) -->
+  <section class="shop-section" data-aos="fade-up">
+    <h2>🧢 Team Merch</h2>
+
+    <!-- Filters + Sorting -->
+    <div class="filters" style="max-width:1000px;margin:0 auto 1rem;">
+      <div class="filter-field">
+        <label for="merchTagFilter">Category</label>
+        <select id="merchTagFilter">
+          <option value="all">All</option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label for="merchSort">Sort by</label>
+        <select id="merchSort">
+          <option value="relevance">Relevance</option>
+          <option value="price_asc">Price: Low → High</option>
+          <option value="price_desc">Price: High → Low</option>
+          <option value="category_az">Category: A → Z</option>
+        </select>
+      </div>
+
+      <div class="filter-field search-field">
+        <label for="merchSearch">Search</label>
+        <input id="merchSearch" type="text" placeholder="Search merch…" />
+      </div>
+
+      <button class="btn" id="merchClear">Clear Filters</button>
+    </div>
+
+    <div id="merch-grid" class="merch-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-aos="fade-in">
+    <p>Questions? Contact us at <a href="mailto:ccoupegaming@gmail.com">ccoupegaming@gmail.com</a></p>
+    <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script> AOS.init({ duration: 1000, once: true }); </script>
+</body>
+</html>

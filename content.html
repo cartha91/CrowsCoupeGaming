@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content | CrowsCoupe Gaming</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">CrowsCoupe Gaming</div>
+    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="content.html" class="active">Content</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="contact.html">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero content-hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Content Hub</h1>
+      <p>Clips, streams, moments, and madness from the CrowsCoupe crew.</p>
+    </div>
+  </section>
+
+  <section class="content-section" data-aos="fade-up">
+    <h2>🔥 Featured Clips</h2>
+    <div class="clip-grid">
+      <div class="clip" data-aos="zoom-in">
+        <video controls src="public/assets/videos/clip1.mp4" poster="public/assets/images/thumb1.jpg"></video>
+        <p>360 No Scope comeback — Twitch Highlight</p>
+      </div>
+      <div class="clip" data-aos="zoom-in" data-aos-delay="100">
+        <video controls src="public/assets/videos/clip2.mp4" poster="public/assets/images/thumb2.jpg"></video>
+        <p>Speedrun Glitch - Minecraft Mod Showcase</p>
+      </div>
+      <div class="clip" data-aos="zoom-in" data-aos-delay="200">
+        <video controls src="public/assets/videos/clip3.mp4" poster="public/assets/images/thumb3.jpg"></video>
+        <p>Final Zone Win with 1HP — Fortnite</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" data-aos="fade-up">
+    <h2>🎥 Stream Replays & Live Channels</h2>
+    <div class="stream-embeds">
+      <div class="stream-card" data-aos="fade-up">
+        <iframe
+          src="https://player.twitch.tv/?channel=rogueraven&parent=localhost&parent=your-production-domain.com"
+          height="300"
+          width="100%"
+          allowfullscreen>
+        </iframe>
+        <p><a href="https://twitch.tv/rogueraven" target="_blank">Watch RogueRaven on Twitch</a></p>
+      </div>
+      <div class="stream-card" data-aos="fade-up" data-aos-delay="150">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="YouTube video"
+          allowfullscreen
+          width="100%"
+          height="300">
+        </iframe>
+        <p><a href="https://youtube.com/c/crowscoupe" target="_blank">Visit our YouTube Channel</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer data-aos="fade-in">
+    <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script> AOS.init({ duration: 1000, once: true }); </script>
+</body>
+</html>

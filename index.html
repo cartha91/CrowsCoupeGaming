@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrowsCoupe Gaming</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">CrowsCoupe Gaming</div>
+    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="contact.html">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Welcome to CrowsCoupe Gaming</h1>
+      <p>Unleashing chaos, creativity, and community across every realm of gaming.</p>
+      <a href="join.html" class="btn">Join the Flock</a>
+    </div>
+  </section>
+
+  <section class="about-preview" data-aos="fade-right">
+    <h2>Who We Are</h2>
+    <p>CrowsCoupe Gaming is a team-driven collective of gamers, creators, and streamers pushing the limits of gameplay and community interaction.</p>
+    <a href="about.html" class="btn-secondary">More About Us</a>
+  </section>
+
+  <section class="featured-clips">
+    <h2 data-aos="fade-up">🔥 Featured Clips</h2>
+    <div class="clip-grid">
+      <div class="clip" data-aos="zoom-in">
+        <video controls src="./public/assets/videos/Featured-vid1.mp4" poster="public/assets/images/thumb1.jpg"></video>
+        <p>“Just a nice crispy warzone snipe!</p>
+      </div>
+      <div class="clip" data-aos="zoom-in" data-aos-delay="150">
+        <video controls src="./public/assets/videos/Featured-vid2.mp4" poster="public/assets/images/thumb2.jpg"></video>
+        <p>Throne & Liberty Hype Trailer</p>
+      </div>
+      <div class="clip" data-aos="zoom-in" data-aos-delay="300">
+        <video controls src="./public/assets/videos/Featured-vid3.mp4" poster="public/assets/images/thumb3.jpg"></video>
+        <p>What I like to call the Shadow Drop</p>
+      </div>
+    </div>
+    <a href="content.html" class="btn-secondary" data-aos="fade-up" data-aos-delay="400">View All Content</a>
+  </section>
+
+  <section class="upcoming-events" data-aos="fade-up">
+    <h2>📅 Upcoming Streams & Events</h2>
+    <ul class="event-list">
+      <li><strong>Aug 10:</strong> Valorant Tournament Qualifiers (7 PM CST)</li>
+      <li><strong>Aug 12:</strong> Variety Stream Marathon w/ Cartha (4 PM CST)</li>
+      <li><strong>Aug 17:</strong> CrowCraft Community Night – join the chaos!</li>
+    </ul>
+    <a href="games.html" class="btn-secondary" data-aos="fade-up" data-aos-delay="300">Check Out the Games</a>
+  </section>
+
+  <footer data-aos="fade-in">
+    <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script> AOS.init({ duration: 1000, once: true }); </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const vids = document.querySelectorAll('.clip video, .featured-clips video');
+    vids.forEach(v => {
+      v.addEventListener('play', () => {
+        v.muted = false;
+        v.volume = 1;
+        vids.forEach(o => { if (o !== v) o.pause(); });
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
