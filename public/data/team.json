@@ -5,7 +5,7 @@
     "bio": "Rpg enthusiast, variety streamer, anime fan, and collector.",
     "image": "pancake.jpg",
     "games": ["Elder Scrolls", "Throne & Liberty", "Marvel Legends"],
-    "twitch": "https://twitch.tv/rogueraven"
+    "twitch": "https://www.twitch.tv/epicpankakes"
   },
   {
     "name": "Cartha",
@@ -13,12 +13,12 @@
     "bio": "PvP master and top-tier shotcaller in ranked games, Head of CrowsCoupe Gaming and a bit of a weeb",
     "image": "CarthaPro.png",
     "games": ["Throne & Liberty", "Call Of Duty", "Elden Ring"],
-    "youtube": "https://youtube.com/@nightcrow"
+    "twitch": "https://www.twitch.tv/cartha_91"
   },
   {
     "name": "Eally",
-    "role": "Community Mod",
-    "bio": "Holding it down on Discord and keeping the vibes 100, solo gamer, loves the gems like Animal Crossing",
+    "role": "Solo Gamer",
+    "bio": "The right hand to all things CrowsCoupe, solo gamer, loves the gems like Animal Crossing and Stardew Valley",
     "image": "EalleyEdit.png",
     "games": ["Animal Crossing", "Stardew Valley"]
   }

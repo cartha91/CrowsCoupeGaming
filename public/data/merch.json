@@ -6,7 +6,7 @@
     "image": "merch-hat.jpg",
     "description": "Logo-stitched cap with shadow wings embroidery.",
     "url": "https://yourstore.com/products/hat",
-    "status": "in_stock",
+    "status": "coming_soon",
     "tags": ["apparel", "cap"]
   },
   {
@@ -16,7 +16,7 @@
     "image": "merch-tee.jpg",
     "description": "Premium fabric with signature CrowsCoupe crest.",
     "url": "https://yourstore.com/products/tee",
-    "status": "in_stock",
+    "status": "coming_soon",
     "tags": ["apparel", "t-shirt"]
   },
   {
@@ -36,7 +36,8 @@
     "image": "merch-stickers.jpg",
     "description": "Waterproof vinyl stickers — slap the flock anywhere.",
     "url": "https://yourstore.com/products/stickers",
-    "status": "out_of_stock",
+    "status": "coming_soon",
     "tags": ["accessories"]
   }
 ]
+
