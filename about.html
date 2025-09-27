@@ -2,29 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About | CrowsCoupe Gaming</title>
+  <meta name="description" content="CrowsCoupe Gaming is a collective of creators, competitive players, and passionate gamers building a next-level community across Discord and Twitch." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="About — CrowsCoupe Gaming" />
+  <meta property="og:description" content="More than a team — we're a movement. Meet the mission and values behind CrowsCoupe Gaming." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/assets/images/og-image.jpg" />
+  <meta name="theme-color" content="#00ffc3" />
+
+  <link rel="icon" href="public/assets/images/favicon.ico" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="logo">CrowsCoupe Gaming</div>
-    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="content.html">Content</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Shop</a></li>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html" class="active">About</a></li>
+        <li role="none"><a role="menuitem" href="team.html">Team</a></li>
+        <li role="none"><a role="menuitem" href="games.html">Games</a></li>
+        <li role="none"><a role="menuitem" href="content.html">Content</a></li>
+        <li role="none"><a role="menuitem" href="join.html">Join</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Shop</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero about-hero">
     <div class="hero-content" data-aos="fade-up">
       <h1>About CrowsCoupe Gaming</h1>
@@ -32,14 +44,16 @@
     </div>
   </section>
 
-  <section class="about-section" data-aos="fade-up">
-    <h2>Our Mission</h2>
+  <!-- Mission -->
+  <section class="about-section" data-aos="fade-up" aria-labelledby="mission-heading">
+    <h2 id="mission-heading">Our Mission</h2>
     <p>CrowsCoupe Gaming was founded to break the mold of traditional gaming groups. We’re a collective of content creators, competitive players, and passionate gamers — united under one banner.</p>
     <p>Whether it’s dominating tournaments, cozy game nights, or building a next-level community on Discord and Twitch, we represent everything that makes gaming electric.</p>
   </section>
 
-  <section class="about-section" data-aos="fade-right">
-    <h2>What We Stand For</h2>
+  <!-- Values -->
+  <section class="about-section" data-aos="fade-right" aria-labelledby="values-heading">
+    <h2 id="values-heading">What We Stand For</h2>
     <ul class="about-values">
       <li><strong>💡 Creativity:</strong> Stream it, meme it, mod it, love it.</li>
       <li><strong>🎮 Skill:</strong> From cracked FPS aim to cozy builder vibes — we value all playstyles.</li>
@@ -48,54 +62,72 @@
     </ul>
   </section>
 
-  <section class="about-section testimonials" data-aos="fade-up">
-    <h2>What Our Members Say</h2>
+  <!-- Testimonials -->
+  <section class="about-section testimonials" data-aos="fade-up" aria-labelledby="testimonials-heading">
+    <h2 id="testimonials-heading">What Our Members Say</h2>
     <div class="testimonial-grid">
       <blockquote>
-        <p>"Joining CrowsCoupe was the best decision I made as a streamer. The support is real."</p>
-        <footer>- RogueRaven</footer>
+        <p>“Joining CrowsCoupe was the best decision I made as a streamer. The support is real.”</p>
+        <cite>— RogueRaven</cite>
       </blockquote>
       <blockquote>
-        <p>"Whether you're chill or cracked, there's a place for your energy here."</p>
-        <footer>- NightCrow</footer>
+        <p>“Whether you're chill or cracked, there's a place for your energy here.”</p>
+        <cite>— NightCrow</cite>
       </blockquote>
       <blockquote>
-        <p>"The community events and Discord are elite. Never felt more connected while gaming."</p>
-        <footer>- Ember</footer>
+        <p>“The community events and Discord are elite. Never felt more connected while gaming.”</p>
+        <cite>— Ember</cite>
       </blockquote>
     </div>
   </section>
 
-  <section class="about-section stats" data-aos="zoom-in">
-    <h2>Where We Fly</h2>
+  <!-- Stats -->
+  <section class="about-section stats" data-aos="zoom-in" aria-labelledby="stats-heading">
+    <h2 id="stats-heading">Where We Fly</h2>
     <div class="stats-grid">
       <div class="stat-card">
-        <h3>Call Of Duty</h3>
-        <p><strong>3x</strong> World Warzone Tournament Contenders</p>
+        <h3>Call of Duty</h3>
+        <p><strong>3×</strong> Warzone tournament contenders</p>
       </div>
       <div class="stat-card">
-        <h3>Valheim</h3>
-        <p><strong>Proffesional Builders</strong> <br> <strong>3</strong> Modded Community Servers</p>
+        <h3>Minecraft</h3>
+        <p><strong>Professional Builders</strong><br /><strong>3</strong> modded community servers</p>
       </div>
       <div class="stat-card">
-        <h3>Throne & Liberty</h3>
-        <p><strong>Top 300</strong> PVP competitor in Eastern North America</p>
+        <h3>Throne &amp; Liberty</h3>
+        <p><strong>Top 300</strong> PvP competitor in Eastern North America</p>
       </div>
     </div>
   </section>
 
-  <section class="about-section" data-aos="fade-up">
-    <h2>Ready to Join the Flock?</h2>
+  <!-- CTA -->
+  <section class="about-section" data-aos="fade-up" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Ready to Join the Flock?</h2>
     <p>If you're a creator, competitor, or just someone who wants to vibe and fly with the CrowsCoupe crew — we want to hear from you.</p>
-    <a href="join.html" class="btn">Join Now</a>
+    <a href="join.html" class="btn" aria-label="Go to Join page">Join Now</a>
   </section>
 
+  <!-- Footer -->
   <footer data-aos="fade-in">
     <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script> AOS.init({ duration: 1000, once: true }); </script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // keep menu button a11y state in sync
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+    });
+  </script>
 </body>
 </html>

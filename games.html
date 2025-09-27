@@ -2,29 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Games | CrowsCoupe Gaming</title>
+  <meta name="description" content="From cracked headshots to cozy builds—see the games where the CrowsCoupe crew thrives: Throne & Liberty, Call of Duty, Valheim, community nights, and more." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="CrowsCoupe Gaming — Games" />
+  <meta property="og:description" content="From cracked headshots to cozy builds — this is where the flock thrives." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/assets/images/og-image.jpg" />
+  <meta name="theme-color" content="#00ffc3" />
+
+  <link rel="icon" href="public/assets/images/favicon.ico" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="logo">CrowsCoupe Gaming</div>
-    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="games.html" class="active">Games</a></li>
-        <li><a href="content.html">Content</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Shop</a></li>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="team.html">Team</a></li>
+        <li role="none"><a role="menuitem" href="games.html" class="active">Games</a></li>
+        <li role="none"><a role="menuitem" href="content.html">Content</a></li>
+        <li role="none"><a role="menuitem" href="join.html">Join</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Shop</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero games-hero">
     <div class="hero-content" data-aos="fade-up">
       <h1>Games We Dominate</h1>
@@ -32,45 +44,64 @@
     </div>
   </section>
 
-  <section class="games-section" data-aos="fade-up">
-    <h2>Featured Titles</h2>
+  <!-- Featured Titles -->
+  <section class="games-section" data-aos="fade-up" aria-labelledby="featured-games-heading">
+    <h2 id="featured-games-heading">Featured Titles</h2>
     <div class="games-grid">
       <div class="game-card" data-aos="zoom-in">
-        <img src="./public/assets/images/T&LBG.jpg" alt="Throne & Liberty">
-        <h3>Throne & Liberty</h3>
-        <p>PvPvE content including contract runs, seiges, comp arena matches and ton of community nights and grind streams.</p>
+        <!-- Rename T&LBG.jpg -> TLBG.jpg if possible -->
+        <img src="./public/assets/images/T&LBG.jpg" alt="Throne &amp; Liberty" loading="lazy" decoding="async">
+        <h3>Throne &amp; Liberty</h3>
+        <p>PvPvE content including contract runs, sieges, comp arena matches, and a ton of community nights and grind streams.</p>
       </div>
+
       <div class="game-card" data-aos="zoom-in" data-aos-delay="100">
-        <img src="./public/assets/images/BO6Bg.jpg" alt="Call Of Duty">
-        <h3>Call Of Duty</h3>
-        <p>BO6 Tournaments & ranked play, competitive Warzone Matches, Zombie grinds, all of the content that keeps you craving more.</p>
+        <img src="public/assets/images/BO6Bg.jpg" alt="Call of Duty" loading="lazy" decoding="async">
+        <h3>Call of Duty</h3>
+        <p>BO6 tournaments &amp; ranked play, competitive Warzone matches, zombie grinds — all the content that keeps you craving more.</p>
       </div>
+
       <div class="game-card" data-aos="zoom-in" data-aos-delay="200">
-        <img src="./public/assets/images/Valheim_2021_logo.jpg" alt="Valheim">
+        <img src="public/assets/images/Valheim_2021_logo.jpg" alt="Valheim" loading="lazy" decoding="async">
         <h3>Valheim</h3>
-        <p>Some of the best builds in the game right here on our own professionally modded servers, Dedicated to you the CrowsCoupe community.</p>
+        <p>Some of the best builds in the game on our professionally modded servers, dedicated to the CrowsCoupe community.</p>
       </div>
+
       <div class="game-card" data-aos="zoom-in" data-aos-delay="300">
-        <img src="./public/assets/images/SoloBg.jpg" alt="Solo Gaming">
+        <img src="public/assets/images/SoloBg.jpg" alt="Solo Gaming" loading="lazy" decoding="async">
         <h3>Solo Gaming</h3>
-        <p>While were all about competition and chaos, we enjoy a good story or solo gaming experience as well, including titles like stardew valley,
-          Animal Crossing, Legend of Zelda, and much more!
-        </p>
+        <p>While we’re all about competition and chaos, we enjoy a good story or solo experience too — titles like Stardew Valley, Animal Crossing, The Legend of Zelda, and more!</p>
       </div>
+
       <div class="game-card" data-aos="zoom-in" data-aos-delay="300">
-        <img src="./public/assets/images/ComNightBg.jpg" alt="Community Night">
+        <img src="public/assets/images/ComNightBg.jpg" alt="Community Nights" loading="lazy" decoding="async">
         <h3>Community Nights</h3>
-        <p>Were not just about playing games, were here to build a home for gamers, a place to hang and actually enjoy gaming for what its meant to be.</p>
+        <p>We’re not just about playing games; we’re here to build a home for gamers — a place to hang and enjoy gaming for what it’s meant to be.</p>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer data-aos="fade-in">
     <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script> AOS.init({ duration: 1000, once: true }); </script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // keep menu button a11y state in sync
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+    });
+  </script>
 </body>
 </html>

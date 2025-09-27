@@ -2,77 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Join Us | CrowsCoupe Gaming</title>
+  <meta name="description" content="Join the CrowsCoupe Gaming community: connect on Discord, follow our socials, and squad up for events and streams." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Join CrowsCoupe Gaming" />
+  <meta property="og:description" content="Connect on Discord and follow our socials. Streamers, players, and creators welcome." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/assets/images/og-image.jpg" />
+  <meta name="theme-color" content="#00ffc3" />
+
+  <link rel="icon" href="public/assets/images/favicon.ico" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="logo">CrowsCoupe Gaming</div>
-    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="content.html">Content</a></li>
-        <li><a href="join.html" class="active">Join</a></li>
-        <li><a href="contact.html">Shop</a></li>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="team.html">Team</a></li>
+        <li role="none"><a role="menuitem" href="games.html">Games</a></li>
+        <li role="none"><a role="menuitem" href="content.html">Content</a></li>
+        <li role="none"><a role="menuitem" href="join.html" class="active">Join</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Shop</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero join-hero">
     <div class="hero-content" data-aos="fade-up">
       <h1>Join the Flock</h1>
       <p>Streamers, players, and creators — CrowsCoupe Gaming is always scouting new talent and good vibes.</p>
+      <a href="#join-discord" class="btn" aria-label="Jump to Discord section">Join Now</a>
     </div>
   </section>
 
-  <section class="join-section" data-aos="fade-up">
-  <h2>💬 Join Our Discord</h2>
-  <p>This is the heart of our community — open to players, fans, and future members alike.</p>
+  <!-- Discord -->
+  <section id="join-discord" class="join-section" data-aos="fade-up" aria-labelledby="discord-heading">
+    <h2 id="discord-heading">💬 Join Our Discord</h2>
+    <p>This is the heart of our community — open to players, fans, and future members alike.</p>
 
-  <iframe
-    title="CrowsCoupe Gaming Discord Widget"
-    src="https://discord.com/widget?id=1260992760836653220&theme=dark"
-    width="100%"
-    height="300"
-    allowtransparency="true"
-    frameborder="0"
-    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-  </iframe>
+    <iframe
+      title="CrowsCoupe Gaming Discord Widget"
+      src="https://discord.com/widget?id=1260992760836653220&theme=dark"
+      width="100%"
+      height="300"
+      allowtransparency="true"
+      frameborder="0"
+      loading="lazy"
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+    </iframe>
 
-  <p>
-    <a href="https://discord.gg/6m3nzSzD5W" target="_blank" rel="noopener" class="btn">
-      Open Discord in App
-    </a>
-  </p>
+    <p>
+      <a href="https://discord.gg/6m3nzSzD5W" target="_blank" rel="noopener" class="btn">
+        Open Discord in App
+      </a>
+    </p>
 
-  <!-- Optional fallback if the widget is blocked by a browser extension -->
-  <noscript>
-    <p>Discord preview requires JavaScript. Use the button above to open our server.</p>
-  </noscript>
-</section>
+    <noscript>
+      <p>Discord preview requires JavaScript. Use the button above to open our server.</p>
+    </noscript>
+  </section>
 
-
-  <section class="join-section" data-aos="zoom-in">
-    <h2>📱 Follow Us on Socials</h2>
+  <!-- Socials -->
+  <section class="join-section" data-aos="zoom-in" aria-labelledby="socials-heading">
+    <h2 id="socials-heading">📱 Follow Us on Socials</h2>
     <div class="social-links">
-      <a href="https://www.instagram.com/crowscoupe.designs/" target="_blank" class="social-btn">📸 Instagram</a>
-      <a href="https://www.tiktok.com/@cartha_91" target="_blank" class="social-btn">🎵 TikTok</a>
+      <a href="https://www.instagram.com/crowscoupe.designs/" target="_blank" rel="noopener" class="social-btn" aria-label="Open our Instagram">📸 Instagram</a>
+      <a href="https://www.tiktok.com/@cartha_91" target="_blank" rel="noopener" class="social-btn" aria-label="Open our TikTok">🎵 TikTok</a>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer data-aos="fade-in">
     <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script> AOS.init({ duration: 1000, once: true }); </script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // keep menu button a11y state in sync on this page too
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+    });
+  </script>
 </body>
 </html>

@@ -52,7 +52,7 @@ h2{font-size:2rem;color:#00ffc3;margin-bottom:2rem;text-align:center}
 footer{background-color:#151526;text-align:center;padding:1.5rem 1rem;font-size:.9rem;color:#888}
 
 /* ========= CONTENT PAGE ========= */
-.content-hero{background:url('../public/assets/images/content-bg.jpg') center/cover no-repeat fixed;min-height:50vh}
+.content-hero{background:url('../public/assets/images/JoinBg.png') center/cover no-repeat fixed;min-height:50vh}
 .content-section{max-width:1200px;margin:0 auto;padding:4rem 2rem;text-align:center}
 .stream-embeds{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2rem}
 .stream-card iframe{border:none;border-radius:8px;box-shadow:0 0 15px rgba(0,255,195,.1)}

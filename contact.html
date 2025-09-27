@@ -2,8 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop | CrowsCoupe Gaming</title>
+  <meta name="description" content="Support the flock with exclusive CrowsCoupe Gaming merch—tees, hoodies, accessories, and more." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="CrowsCoupe Gaming — Shop" />
+  <meta property="og:description" content="Grab exclusive CrowsCoupe merch and rep the team in style." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/assets/images/og-image.jpg" />
+  <meta name="theme-color" content="#00ffc3" />
+
+  <link rel="icon" href="public/assets/images/favicon.ico" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
@@ -12,16 +22,16 @@
   <!-- Header -->
   <header>
     <div class="logo">CrowsCoupe Gaming</div>
-    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="content.html">Content</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html" class="active">Shop</a></li>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="team.html">Team</a></li>
+        <li role="none"><a role="menuitem" href="games.html">Games</a></li>
+        <li role="none"><a role="menuitem" href="content.html">Content</a></li>
+        <li role="none"><a role="menuitem" href="join.html">Join</a></li>
+        <li role="none"><a role="menuitem" href="contact.html" class="active">Shop</a></li>
       </ul>
     </nav>
   </header>
@@ -35,21 +45,21 @@
   </section>
 
   <!-- Merch Grid (JSON-driven) -->
-  <section class="shop-section" data-aos="fade-up">
-    <h2>🧢 Team Merch</h2>
+  <section class="shop-section" data-aos="fade-up" aria-labelledby="merch-heading">
+    <h2 id="merch-heading">🧢 Team Merch</h2>
 
     <!-- Filters + Sorting -->
-    <div class="filters" style="max-width:1000px;margin:0 auto 1rem;">
+    <div class="filters" style="max-width:1000px;margin:0 auto 1rem;" role="group" aria-label="Merch filters and sorting">
       <div class="filter-field">
         <label for="merchTagFilter">Category</label>
-        <select id="merchTagFilter">
+        <select id="merchTagFilter" aria-label="Filter by category">
           <option value="all">All</option>
         </select>
       </div>
 
       <div class="filter-field">
         <label for="merchSort">Sort by</label>
-        <select id="merchSort">
+        <select id="merchSort" aria-label="Sort merchandise">
           <option value="relevance">Relevance</option>
           <option value="price_asc">Price: Low → High</option>
           <option value="price_desc">Price: High → Low</option>
@@ -59,10 +69,10 @@
 
       <div class="filter-field search-field">
         <label for="merchSearch">Search</label>
-        <input id="merchSearch" type="text" placeholder="Search merch…" />
+        <input id="merchSearch" type="text" placeholder="Search merch…" aria-label="Search merchandise" />
       </div>
 
-      <button class="btn" id="merchClear">Clear Filters</button>
+      <button class="btn" id="merchClear" aria-label="Clear all filters">Clear Filters</button>
     </div>
 
     <div id="merch-grid" class="merch-grid" aria-live="polite"></div>
@@ -74,8 +84,22 @@
     <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script> AOS.init({ duration: 1000, once: true }); </script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // keep menu button a11y state in sync
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+    });
+  </script>
 </body>
 </html>

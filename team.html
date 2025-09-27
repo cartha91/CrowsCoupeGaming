@@ -2,29 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team | CrowsCoupe Gaming</title>
+  <meta name="description" content="Meet the CrowsCoupe Gaming squad: streamers, competitive players, creators, and community mods." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="CrowsCoupe Gaming — Team" />
+  <meta property="og:description" content="A united force of creators, competitors, and community-builders." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/assets/images/og-image.jpg" />
+  <meta name="theme-color" content="#00ffc3" />
+
+  <link rel="icon" href="public/assets/images/favicon.ico" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="logo">CrowsCoupe Gaming</div>
-    <button class="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html" class="active">Team</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="content.html">Content</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Shop</a></li>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="team.html" class="active">Team</a></li>
+        <li role="none"><a role="menuitem" href="games.html">Games</a></li>
+        <li role="none"><a role="menuitem" href="content.html">Content</a></li>
+        <li role="none"><a role="menuitem" href="join.html">Join</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Shop</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero team-hero">
     <div class="hero-content" data-aos="fade-up">
       <h1>Meet the CrowsCoupe Team</h1>
@@ -32,8 +44,9 @@
     </div>
   </section>
 
-  <section class="filters-section" data-aos="fade-up">
-    <h2>Find Your Flock</h2>
+  <!-- Filters -->
+  <section class="filters-section" data-aos="fade-up" aria-labelledby="filters-heading">
+    <h2 id="filters-heading">Find Your Flock</h2>
     <div class="filters">
       <div class="filter-field">
         <label for="roleFilter">Role</label>
@@ -55,12 +68,14 @@
     </div>
   </section>
 
-  <section class="team-overview" data-aos="fade-up">
-    <h2>Our Squad</h2>
+  <!-- Team Grid -->
+  <section class="team-overview" data-aos="fade-up" aria-labelledby="team-heading">
+    <h2 id="team-heading">Our Squad</h2>
     <p>Meet the players, creators, and chaos agents that power CrowsCoupe Gaming.</p>
-    <div id="team-container" class="team-roles dynamic-team"></div>
+    <div id="team-container" class="team-roles dynamic-team" aria-live="polite"></div>
   </section>
 
+  <!-- Profile Modal -->
   <div id="profile-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content" role="document">
       <button class="modal-close" aria-label="Close">×</button>
@@ -78,12 +93,27 @@
     <div class="modal-backdrop"></div>
   </div>
 
+  <!-- Footer -->
   <footer data-aos="fade-in">
     <p>&copy; 2025 CrowsCoupe Gaming | Powered by CrowsCoupe Designs</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script> AOS.init({ duration: 1000, once: true }); </script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // Keep menu button a11y state in sync
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+    });
+  </script>
 </body>
 </html>
