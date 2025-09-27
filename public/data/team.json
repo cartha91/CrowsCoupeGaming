@@ -2,23 +2,23 @@
   {
     "name": "EpicPankakes",
     "role": "Streamer",
-    "bio": "Rpg enthusiast, variety streamer, anime fan, and collector.",
+    "bio": "RPG enthusiast, variety streamer, anime fan, and collector.",
     "image": "pancake.jpg",
-    "games": ["Elder Scrolls", "Throne & Liberty", "Marvel Legends"],
-    "twitch": "https://www.twitch.tv/epicpankakes"
+    "games": ["The Elder Scrolls", "Throne & Liberty", "Marvel Snap"],
+    "twitch": "epicpankakes"
   },
   {
     "name": "Cartha",
     "role": "Competitive Player",
-    "bio": "PvP master and top-tier shotcaller in ranked games, Head of CrowsCoupe Gaming and a bit of a weeb",
-    "image": "CarthaPro.png",
-    "games": ["Throne & Liberty", "Call Of Duty", "Elden Ring"],
-    "twitch": "https://www.twitch.tv/cartha_91"
+    "bio": "PvP master and top-tier shotcaller in ranked games, Head of CrowsCoupe Gaming, and a bit of a weeb.",
+    "image": "carthapro.png",
+    "games": ["Throne & Liberty", "Call of Duty", "Elden Ring"],
+    "twitch": "cartha_91"
   },
   {
     "name": "Eally",
     "role": "Solo Gamer",
-    "bio": "The right hand to all things CrowsCoupe, solo gamer, loves the gems like Animal Crossing and Stardew Valley",
+    "bio": "Right hand to all things CrowsCoupe; solo gamer; loves gems like Animal Crossing and Stardew Valley.",
     "image": "EalleyEdit.png",
     "games": ["Animal Crossing", "Stardew Valley"]
   }

@@ -10,16 +10,47 @@
 
 const TWITCH_PROXY_ENDPOINT = "/api/twitch-live";
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ---------------- NAV ----------------
-  const toggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  if (toggle && navLinks) {
-    toggle.addEventListener("click", () => {
-      const open = navLinks.classList.toggle("show");
-      toggle.setAttribute("aria-expanded", String(open));
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  // --------- ROBUST NAV TOGGLE ---------
+  const toggle = document.querySelector('.menu-toggle');
+
+  // Prefer the UL referenced by aria-controls (id), else the nearest header's .nav-links
+  const getMenuEl = () => {
+    if (!toggle) return null;
+    const id = toggle.getAttribute('aria-controls');
+    if (id) {
+      const el = document.getElementById(id);
+      if (el) return el;
+    }
+    // fallback: first .nav-links inside the same header (most reliable structurally)
+    const header = toggle.closest('header');
+    if (header) {
+      const el = header.querySelector('.nav-links');
+      if (el) return el;
+    }
+    // ultimate fallback: first .nav-links on the page
+    return document.querySelector('.nav-links');
+  };
+
+  const nav = getMenuEl();
+
+  const toggleMenu = () => {
+    if (!toggle || !nav) return;
+    const open = nav.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+
+  if (toggle && nav) {
+    // Click for all browsers
+    toggle.addEventListener('click', toggleMenu);
+    // iOS/Safari fallback (older versions sometimes drop click)
+    toggle.addEventListener('pointerup', (e) => {
+      // Only if it didn't already toggle on click
+      if (!nav.classList.contains('show')) toggleMenu();
+    }, { passive: true });
   }
+
+
 
   // ---------------- TEAM PAGE ----------------
   const teamContainer = document.getElementById("team-container");

@@ -6,7 +6,15 @@ ul{list-style:none}
 img,video,iframe{max-width:100%;display:block;border:0}
 
 /* ========= HEADER / NAV ========= */
-header{background-color:#151526;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;position:sticky;top:0;z-index:1000}
+header{
+  background-color:#151526;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2rem;
+  position:sticky;top:0;
+  z-index:2000; /* keep header above everything */
+  background:rgba(10,10,14,0.8);
+  backdrop-filter:blur(6px);
+}
 .logo{font-size:1.8rem;font-weight:bold;color:#00ffc3;text-shadow:0 0 5px #00ffc3}
 .nav-links{display:flex;gap:1.5rem}
 .nav-links a{color:#fff;transition:color .3s ease}
@@ -18,7 +26,8 @@ header{background-color:#151526;display:flex;justify-content:space-between;align
 /* ========= HERO ========= */
 .hero{
   background:url('../public/assets/images/Ccg-Hero-Bg.png') center/cover no-repeat;
-  min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;position:relative}
+  min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;position:relative
+}
 .hero::after{content:"";position:absolute;inset:0;background:rgba(0, 0, 0, 0.207)}
 .hero-content{position:relative;z-index:2;color:#fff}
 .hero h1{font-size:3rem;margin-bottom:1rem;text-shadow:0 0 10px #00ffc3}
@@ -110,8 +119,8 @@ footer{background-color:#151526;text-align:center;padding:1.5rem 1rem;font-size:
 /* Modal + Animations */
 .modal{position:fixed;inset:0;display:none;z-index:2000}
 .modal[aria-hidden="false"]{display:block}
-.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.65);animation:fadeIn 200ms ease both}
-.modal-content{position:relative;max-width:900px;margin:8vh auto;background:#0f0f1b;border:1px solid #00ffc3;border-radius:12px;padding:1rem;box-shadow:0 0 24px rgba(0,255,195,.25)}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);animation:fadeIn 200ms ease both;z-index:10}
+.modal-content{position:relative;max-width:900px;margin:8vh auto;background:#121226;border:1px solid #00ffc3;border-radius:12px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,0.6), 0 0 24px rgba(0,255,195,0.25);z-index:20}
 .modal-close{position:absolute;top:6px;right:10px;font-size:1.6rem;background:none;border:none;color:#00ffc3;cursor:pointer}
 .modal-body{display:grid;grid-template-columns:320px 1fr;gap:1rem}
 .modal-body img{width:100%;height:320px;object-fit:cover;border-radius:10px}
@@ -149,23 +158,84 @@ footer{background-color:#151526;text-align:center;padding:1.5rem 1rem;font-size:
 .merch-card h3{color:#00ffc3;margin:1rem 0 .5rem}
 .merch-card p{font-size:.9rem;margin-bottom:1rem}
 
-/* ========= RESPONSIVE NAV ========= */
-@media (max-width:768px){
-  .nav-links{flex-direction:column;background-color:#151526;position:absolute;top:100%;left:0;right:0;display:none;text-align:center;padding:1rem 0}
+/* ========= RESPONSIVE NAV (UNIFIED) ========= */
+/* Desktop default */
+.menu-toggle{display:none}
+
+/* Mobile / Tablet */
+@media (max-width: 900px){
+  .menu-toggle{
+    display:inline-flex;
+    align-items:center;justify-content:center;
+    width:44px;height:44px;font-size:1.6rem;line-height:1;
+    background:transparent;border:0;color:#fff;cursor:pointer;
+    z-index:2100; /* above the dropdown */
+    position:relative;
+  }
+
+  nav{position:relative}
+
+  .nav-links{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;
+    margin:0;padding:0.75rem;
+    flex-direction:column;gap:0.25rem;
+    background:rgba(12,12,16,0.97);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    backdrop-filter:blur(6px);
+    z-index:2050; /* above hero/content */
+  }
   .nav-links.show{display:flex}
-  .menu-toggle{display:block}
+
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:0.75rem 0.9rem;width:100%}
 }
 
-/* --- Modal visibility tweaks (place at end of style.css) --- */
-.modal { z-index: 2000; } /* already there, but safe to repeat */
-
-.modal-backdrop {
-  background: rgba(0, 0, 0, 0.45);   /* was 0.65; lighten the dim */
-  z-index: 10;                        /* ensure it sits below content */
+/* Push hero sections below header so they never block taps */
+.hero,.join-hero,.content-hero,.team-hero,.games-hero,.shop-hero{
+  position:relative;z-index:1;
 }
 
-.modal-content {
-  z-index: 20;                        /* sits above backdrop */
-  background: #121226;                /* slightly lighter background for contrast */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 24px rgba(0,255,195,0.25);
+/* ======= HARD OVERRIDE: MOBILE NAV ALWAYS ON TOP ======= */
+@media (max-width: 900px) {
+  /* Make sure header is clickable and above everything */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 5000;
+  }
+
+  /* Force the dropdown to a fixed panel at the top */
+  nav .nav-links {
+    display: none !important;
+    position: fixed !important;
+    top: 64px;           /* ~header height; adjust if needed */
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 12px;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(12,12,16,0.98);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    z-index: 6000 !important;  /* above hero/overlays */
+  }
+  nav .nav-links.show {
+    display: flex !important;
+  }
+
+  /* Ensure the button is tappable above the panel */
+  .menu-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    font-size: 1.6rem;
+    background: transparent; border: 0; color: #fff;
+    position: relative;
+    z-index: 7000 !important;  /* above the menu */
+  }
 }
