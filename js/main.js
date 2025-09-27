@@ -1,17 +1,17 @@
 // =====================
 // CrowsCoupe Gaming JS
-// - Responsive nav (with a11y state)
-// - Dynamic team loading
+// - Responsive nav
+// - Dynamic team loading (JSON)
 // - Filters (role/game/search)
-// - Modal with animations (backdrop close state)
-// - Twitch LIVE badge via Vercel serverless proxy (with graceful handling)
-// - Merch grid from JSON (filter + search + SORT + lazy images)
+// - Modal with animations
+// - Twitch LIVE badge via serverless proxy (/api/twitch-live)
+// - Merch grid (filter + search + sort)
 // =====================
 
 const TWITCH_PROXY_ENDPOINT = "/api/twitch-live";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ---------------- NAV / HAMBURGER ----------------
+  // ---------------- NAV ----------------
   const toggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   if (toggle && navLinks) {
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let TEAM = [];
   let FILTERS = { role: "all", game: "all", q: "" };
 
+  // Normalize Twitch handle from URL or plain string
   const getTwitchLoginFromUrl = (url) => {
     if (!url) return "";
     try {
@@ -58,30 +59,30 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("public/data/team.json")
       .then((r) => r.json())
       .then((data) => {
-        TEAM = Array.isArray(data) ? data : [];
-        // Build filter options (if selects are present)
-        if (roleFilter) {
-          const roles = Array.from(new Set(TEAM.map((m) => m.role).filter(Boolean))).sort();
-          roles.forEach((role) => {
-            const opt = document.createElement("option");
-            opt.value = role;
-            opt.textContent = role;
-            roleFilter.appendChild(opt);
-          });
-        }
-        if (gameFilter) {
-          const games = Array.from(new Set(TEAM.flatMap((m) => m.games || []))).sort();
-          games.forEach((game) => {
-            const opt = document.createElement("option");
-            opt.value = game;
-            opt.textContent = game;
-            gameFilter.appendChild(opt);
-          });
-        }
+        TEAM = data;
+
+        // Build dropdown filters
+        const roles = Array.from(new Set(TEAM.map((m) => m.role))).sort();
+        const games = Array.from(new Set(TEAM.flatMap((m) => m.games || []))).sort();
+
+        roles.forEach((role) => {
+          const opt = document.createElement("option");
+          opt.value = role;
+          opt.textContent = role;
+          roleFilter.appendChild(opt);
+        });
+
+        games.forEach((game) => {
+          const opt = document.createElement("option");
+          opt.value = game;
+          opt.textContent = game;
+          gameFilter.appendChild(opt);
+        });
+
         renderTeam();
       })
       .catch((err) => {
-        if (teamContainer) teamContainer.innerHTML = "<p>Failed to load team data.</p>";
+        teamContainer.innerHTML = "<p>Failed to load team data.</p>";
         console.error("Error loading team.json:", err);
       });
 
@@ -108,8 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderTeam() {
-    if (!teamContainer) return;
-
     const filtered = TEAM.filter((member) => {
       const roleOk = FILTERS.role === "all" || member.role === FILTERS.role;
       const gameOk =
@@ -135,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.innerHTML = `
         <div class="card-top">
-          <img src="public/assets/images/${member.image}" alt="${member.name}" class="team-image" loading="lazy" decoding="async">
+          <img src="public/assets/images/${member.image}" alt="${member.name}" class="team-image">
           <span class="live-badge" data-live="false" ${twitchLogin ? `data-login="${twitchLogin}"` : ""} hidden>
             <span class="dot"></span> LIVE
           </span>
@@ -161,91 +160,77 @@ document.addEventListener("DOMContentLoaded", () => {
     checkTwitchLiveForDisplayedCards();
   }
 
-  // ---------------- MODAL LOGIC ----------------
+  // Modal open/close with animation
   function openModal(member) {
     if (!modal) return;
 
-    if (mImg) {
-      mImg.src = `public/assets/images/${member.image}`;
-      mImg.alt = member.name;
-    }
-    if (mName) mName.textContent = member.name || "";
-    if (mRole) mRole.textContent = member.role || "";
-    if (mGames) mGames.textContent =
+    mImg.src = `public/assets/images/${member.image}`;
+    mImg.alt = member.name;
+    mName.textContent = member.name;
+    mRole.textContent = member.role;
+    mGames.textContent =
       member.games && member.games.length ? `Games: ${member.games.join(", ")}` : "";
-    if (mBio) mBio.textContent = member.bio || "";
-    if (mLinks) {
-      mLinks.innerHTML = "";
-      if (member.twitch) {
-        const a = document.createElement("a");
-        a.href = member.twitch;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = "Twitch";
-        mLinks.appendChild(a);
-      }
-      if (member.youtube) {
-        const a = document.createElement("a");
-        a.href = member.youtube;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = "YouTube";
-        mLinks.appendChild(a);
-      }
+    mBio.textContent = member.bio || "";
+    mLinks.innerHTML = "";
+
+    if (member.twitch) {
+      const a = document.createElement("a");
+      a.href = member.twitch.startsWith("http") ? member.twitch : `https://twitch.tv/${member.twitch}`;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "Twitch";
+      mLinks.appendChild(a);
+    }
+    if (member.youtube) {
+      const a = document.createElement("a");
+      a.href = member.youtube;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "YouTube";
+      mLinks.appendChild(a);
     }
 
     modal.setAttribute("aria-hidden", "false");
-    modal.classList.remove("is-closing"); // ensure backdrop state reset
     document.body.style.overflow = "hidden";
 
     const content = modal.querySelector(".modal-content");
-    if (content) {
-      content.classList.remove("closing");
-      void content.offsetWidth; // reflow
-      content.classList.add("opening");
-      content.addEventListener("animationend", () => content.classList.remove("opening"), { once: true });
-    }
+    content.classList.remove("closing");
+    void content.offsetWidth; // restart animation
+    content.classList.add("opening");
+    content.addEventListener("animationend", () => content.classList.remove("opening"), { once: true });
   }
 
   function closeModal() {
     if (!modal) return;
     const content = modal.querySelector(".modal-content");
-    if (content) {
-      content.classList.remove("opening");
-      content.classList.add("closing");
-    }
-    // trigger backdrop fade-out (matches CSS .modal.is-closing .modal-backdrop)
-    modal.classList.add("is-closing");
-
-    content?.addEventListener(
+    content.classList.remove("opening");
+    content.classList.add("closing");
+    content.addEventListener(
       "animationend",
       () => {
         modal.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
         content.classList.remove("closing");
-        modal.classList.remove("is-closing"); // cleanup
       },
       { once: true }
     );
   }
 
-  modalClose && modalClose.addEventListener("click", closeModal);
-  modalBackdrop && modalBackdrop.addEventListener("click", closeModal);
+  if (modalClose) modalClose.addEventListener("click", closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal && modal.getAttribute("aria-hidden") === "false") {
       closeModal();
     }
   });
 
-  // ---------------- TWITCH LIVE via proxy ----------------
+  // Twitch LIVE badges via proxy
   async function checkTwitchLiveForDisplayedCards() {
     if (!teamContainer) return;
     const badges = Array.from(teamContainer.querySelectorAll('.live-badge[data-login]'));
     if (badges.length === 0) return;
 
     const logins = Array.from(new Set(badges.map(b => b.getAttribute("data-login")).filter(Boolean)));
-    if (logins.length === 0) return;
-
     const url = `${TWITCH_PROXY_ENDPOINT}?logins=${encodeURIComponent(logins.join(","))}`;
 
     try {
@@ -268,8 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } catch (err) {
       console.error("Twitch proxy check failed:", err);
-      // Graceful: hide badges on failure
-      badges.forEach((b) => { b.hidden = true; b.setAttribute("data-live", "false"); b.removeAttribute("title"); });
     }
   }
 
@@ -288,18 +271,16 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("public/data/merch.json")
       .then((r) => r.json())
       .then((items) => {
-        MERCH = Array.isArray(items) ? items : [];
+        MERCH = items;
 
-        // Build tag options from item tags
-        if (merchTagFilter) {
-          const tags = Array.from(new Set(MERCH.flatMap(m => m.tags || []))).sort();
-          tags.forEach(tag => {
-            const opt = document.createElement("option");
-            opt.value = tag;
-            opt.textContent = tag[0].toUpperCase() + tag.slice(1);
-            merchTagFilter.appendChild(opt);
-          });
-        }
+        // Build category tags
+        const tags = Array.from(new Set(MERCH.flatMap(m => m.tags || []))).sort();
+        tags.forEach(tag => {
+          const opt = document.createElement("option");
+          opt.value = tag;
+          opt.textContent = tag[0].toUpperCase() + tag.slice(1);
+          merchTagFilter.appendChild(opt);
+        });
 
         renderMerch();
       })
@@ -312,12 +293,10 @@ document.addEventListener("DOMContentLoaded", () => {
       MERCH_FILTERS.tag = merchTagFilter.value;
       renderMerch();
     });
-
     merchSearch && merchSearch.addEventListener("input", () => {
       MERCH_FILTERS.q = merchSearch.value;
       renderMerch();
     });
-
     merchClear && merchClear.addEventListener("click", () => {
       MERCH_FILTERS = { tag: "all", q: "" };
       MERCH_SORT = "relevance";
@@ -326,7 +305,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (merchSort) merchSort.value = "relevance";
       renderMerch();
     });
-
     merchSort && merchSort.addEventListener("change", () => {
       MERCH_SORT = merchSort.value;
       renderMerch();
@@ -341,9 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderMerch() {
-    if (!merchGrid) return;
-
-    // Filter
     let filtered = MERCH.filter(item => {
       const tagOk = MERCH_FILTERS.tag === "all" || (item.tags || []).includes(MERCH_FILTERS.tag);
       const q = MERCH_FILTERS.q.trim().toLowerCase();
@@ -351,7 +326,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return tagOk && qOk;
     });
 
-    // Sort
     if (MERCH_SORT === "price_asc" || MERCH_SORT === "price_desc") {
       filtered.sort((a, b) => {
         const pa = typeof a.price === "number" ? a.price : Number.POSITIVE_INFINITY;
@@ -362,12 +336,13 @@ document.addEventListener("DOMContentLoaded", () => {
       filtered.sort((a, b) => {
         const ca = getPrimaryCategory(a);
         const cb = getPrimaryCategory(b);
-        return ca === cb ? a.name.localeCompare(b.name) : ca.localeCompare(cb);
+        if (ca === cb) {
+          return a.name.localeCompare(b.name);
+        }
+        return ca.localeCompare(cb);
       });
     }
-    // "relevance" keeps JSON order
 
-    // Render
     merchGrid.innerHTML = "";
 
     if (filtered.length === 0) {
@@ -397,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })();
 
       card.innerHTML = `
-        <img src="public/assets/images/${item.image}" alt="${item.name || "Merch item"}" loading="lazy" decoding="async">
+        <img src="public/assets/images/${item.image}" alt="${item.name}">
         <h3>${item.name}</h3>
         <p>${item.description || ""}</p>
         <div class="tags" style="margin:0.5rem 0 0.75rem;">

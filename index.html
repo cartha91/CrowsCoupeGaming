@@ -121,7 +121,7 @@
   <script> AOS.init({ duration: 1000, once: true }); </script>
   <script src="js/main.js" defer></script>
   <script>
-    // Ensure videos unmute on user-initiated play and pause others
+    // Unmute on user play & pause other clips; sync menu a11y state
     document.addEventListener('DOMContentLoaded', () => {
       const vids = document.querySelectorAll('.clip video, .featured-clips video');
       vids.forEach(v => {
@@ -132,7 +132,6 @@
         });
       });
 
-      // Optional: keep menu button a11y state in sync
       const toggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav-links');
       if (toggle && nav) {
